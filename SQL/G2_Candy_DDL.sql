@@ -9,6 +9,17 @@ create table CandyProducts (
     price DECIMAL(10, 2) NOT NULL,
     imageURL VARCHAR(255)
 );
+
+create table orderLineItem (
+    candyID INT AUTO_INCREMENT PRIMARY KEY,
+    productName VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    imageURL VARCHAR(255),
+    quantity INT NOT NULL,
+    totalPrice DECIMAL(10, 2) NOT NULL
+);
+
 create table User (
     userID INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL,

@@ -1,3 +1,25 @@
+<!-- 
+To-do:
+    Before checkout, the user should be able to register.
+            -> Effective use of Cookies and Sessions.
+            -> password encryption/
+    navigate through a number of products
+    filters on products -> by name, price (asc, desc)
+    add products to a cart
+    
+    At checkout, the user should get a pdf invoice
+            -> payment gateway
+
+
+    @meet:
+        Object-Oriented Programming in PHP -> make method and function inside class.
+            -> The website should be in compliance with AODA. (learn about it.) -> it is for apperence
+            -> Use effective techniques for preventing SQL Injection and XSS and other potential threats (learn and try to implement these.)
+            -> Use of APIs/ Use Of REST API
+            -> CRUD operation on CandyProducts.
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
