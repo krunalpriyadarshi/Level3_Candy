@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $username = "root"; // Your database username (default is root for XAMPP)
-$password = ""; // Your database password (default is empty for XAMPP)
+$password = "1234567890"; // Your database password (default is empty for XAMPP)
 $database = "group2_Candy";
 
 // Create connection
@@ -15,7 +15,9 @@ if ($conn->connect_error) {
 // Create database if not exists
 $sqlCreateDb = "CREATE DATABASE IF NOT EXISTS $database";
 if ($conn->query($sqlCreateDb) === TRUE) {
-    echo "Database created successfully or already exists.<br>";
+    if (isset($_GET['showMessage']) && $_GET['showMessage'] == 'true') {
+        echo "Database created successfully or already exists.<br>";
+    }
 
     // Select the database
     $conn->select_db($database);

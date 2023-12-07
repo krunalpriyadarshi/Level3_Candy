@@ -1,8 +1,12 @@
-<?php include_once 'admin_crud.php'; ?>
 <?php
+include_once 'admin_crud.php';
+include_once 'db_connection.php';
+
+$candyCrud = new CandyProductsCrud($conn);
+
 if (isset($_GET['deleteCandy'])) {
     $deleteCandyID = $_GET['deleteCandy'];
-    if (deleteCandyProduct($deleteCandyID)) {
+    if ($candyCrud->deleteCandyProduct($deleteCandyID)) {
         echo "<p>Candy deleted successfully!</p>";
         header("Location: admin.php");
     } else {
@@ -20,8 +24,8 @@ if (isset($_GET['updateCandy'])) {
         $newPrice = $_POST['price'];
         $newImageURL = $_POST['imageURL'];
 
-        // Call the updateCandyProduct function
-        if (updateCandyProduct($updateCandyID, $newProductName, $newDescription, $newPrice, $newImageURL)) {
+        // Call the updateCandyProduct method
+        if ($candyCrud->updateCandyProduct($updateCandyID, $newProductName, $newDescription, $newPrice, $newImageURL)) {
             echo "<p>Candy updated successfully!</p>";
             header("Location: admin.php");
         } else {
@@ -29,7 +33,6 @@ if (isset($_GET['updateCandy'])) {
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,20 +45,20 @@ if (isset($_GET['updateCandy'])) {
     <h1>Admin Candy CRUD Operations</h1>
 
     <!-- Add Candy Form -->
-    <h2  id="sectionHead">Add Candy</h2>
+    <h2 id="sectionHead">Add Candy</h2>
     <form action="admin.php" method="post" id="candyForm">
         <label for="productName">Product Name:</label>
         <input type="text" name="productName" required><br>
-        
+
         <label for="description">Description:</label>
         <textarea name="description" required></textarea><br>
-        
+
         <label for="price">Price:</label>
         <input type="number" name="price" step="0.01" required><br>
-        
+
         <label for="imageURL">Image URL:</label>
         <input type="text" name="imageURL" required><br>
-        
+
         <button type="submit" name="addCandy">Add Candy</button>
     </form>
 
@@ -66,7 +69,7 @@ if (isset($_GET['updateCandy'])) {
         $price = $_POST['price'];
         $imageURL = $_POST['imageURL'];
 
-        if (insertCandyProduct($productName, $description, $price, $imageURL)) {
+        if ($candyCrud->insertCandyProduct($productName, $description, $price, $imageURL)) {
             echo "<p>Candy added successfully!</p>";
         } else {
             echo "<p>Error adding candy.</p>";
@@ -77,7 +80,7 @@ if (isset($_GET['updateCandy'])) {
     <!-- Display All Candy Products -->
     <h2>All Candy Products</h2>
     <?php
-    $allCandyProducts = getAllCandyProducts();
+    $allCandyProducts = $candyCrud->getAllCandyProducts();
 
     if (count($allCandyProducts) > 0) {
         echo "<table border='1'>";
@@ -105,12 +108,13 @@ if (isset($_GET['updateCandy'])) {
         function deleteCandy(productID) {
             var confirmation = confirm("Are you sure you want to delete this candy?");
             if (confirmation) {
-                // Call the PHP function to delete candy
+                // Call the PHP method to delete candy
                 window.location.href = 'admin.php?deleteCandy=' + productID;
             }
         }
-        function updateCandy(ID,name,description,price,imageURL){
-            console.log({ID,name,description,price,imageURL});
+
+        function updateCandy(ID, name, description, price, imageURL) {
+            console.log({ ID, name, description, price, imageURL });
             document.getElementById('sectionHead').innerHTML = "Update Candy"
             document.getElementById('candyForm').productName.value = name;
             document.getElementById('candyForm').description.value = description;
@@ -118,7 +122,7 @@ if (isset($_GET['updateCandy'])) {
             document.getElementById('candyForm').imageURL.value = imageURL;
             document.getElementById('candyForm').addCandy.innerHTML = "Update";
 
-             // Set the button name to 'updateCandy'
+            // Set the button name to 'updateCandy'
             document.getElementById('candyForm').addCandy.name = 'updateCandy';
 
             // Optionally, you can also set the action URL with a query parameter for updating

@@ -1,0 +1,36 @@
+*{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    box-sizing: border-box;
+}
+
+/* API image */
+
+
+/* Footer styling */
+.bottom{
+    width: 100%;
+    position:fixed;
+    bottom:0;
+    box-sizing: border-box;
+}
+
+.container{
+    margin: 8px 0px;
+}
+
+.glow-on-hover:hover {
+    transition: 0.3s;
+    text-shadow: 0 0 13px rgba(255, 255, 255, 0.9)
+}
+
+span {
+    font-size: 15px;
+    display: inline;
+}
+
+.bottom-left-img {
+    height: 120px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}

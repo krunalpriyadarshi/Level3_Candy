@@ -3,3 +3,25 @@ git push -u origin1 main
 https://github.com/krunalpriyadarshi/Level3_Candy
 
 http://localhost/Level3_G1/index.php
+
+
+Project_Name/
+|-- public/             # Web server root
+|   |-- index.php      # Main entry point for the application
+|   |-- assets/        # Publicly accessible assets (CSS, JS, images)
+|-- src/                # PHP source code
+|   |-- Controller/    # Controllers
+|   |-- Model/         # Models
+|   |-- View/          # Views
+|-- templates/          # Template files (if using a template engine)
+|-- config/             # Configuration files
+|-- tests/              # Test code
+|-- vendor/             # Composer dependencies
+|-- var/                # Temporary files, caches, logs
+|-- bin/                # Command-line scripts
+|-- database/           # Database-related files (migrations, seeds)
+|-- public/             # Publicly accessible files
+|-- .git/               # Git version control
+|-- .vscode/            # VSCode editor settings
+|-- README.md           # Project README file
+|-- LICENSE             # Project license file
